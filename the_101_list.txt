@@ -576,6 +576,23 @@ rank level limit								content.dll		A9D8E	28b			adoxa
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 ignore rank level limit test, theoretically allowing any number of levels	content.dll		A9D93	7F 0F -> 90 90		adoxa
 																	Gold_Sear
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+turn off auto-generated commodity sell/buy locations detail inside		Freelancer.exe		6FA17	01 -> 00		Venemon
+commodity tab
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+hide station commodity buy/sell info from Information box while docked		Freelancer.exe		75112	01 -> 00		Venemon
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+hide station equipment sell info from Information box while docked		Freelancer.exe		75121	01 -> 00		Venemon
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+hide station ship sell info from Information box while docked			Freelancer.exe		75130	01 -> 00		Venemon
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+hide station market info from Information box in space				Freelancer.exe		75C68	01 -> 00		Venemon
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+hide station commodity buy/sell info from NavMap				Freelancer.exe		97B7F	01 -> 00		Venemon
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+hide station equipment sell info from NavMap					Freelancer.exe		97B8E	01 -> 00		Venemon
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+hide station ship sell info from NavMap						Freelancer.exe		97B9D	01 -> 00		Venemon
 
 -EQUIPMENT/DEALERS-
 use thruster hp_type for cloaking device									            C0 DE 26	adoxa
@@ -772,6 +789,10 @@ bypass mission check on player invite (beware, may bug up RandomMissions)	server
 remove mission check on group invite accept (beware, may bug up RandomMissions)	server.dll		3A438	74 -> EB		M0tah
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 prevent mission failures due to attacking a neutral/friendly object		content.dll		19A59	75 17 -> EB 0E		M0tah
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+Pub::Player:PopUpDialog won't pause the game in SP				Freelancer.exe		8A521	75 -> EB		Venemon
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+Pub::Player:PopUpDialog won't lock controls					Freelancer.exe		8A53D	01 -> 00		Venemon
 
 -SYSTEM EDITING-
 make drag_modifier independent of interference/damage				common.dll		DAD24	05 7B -> 41 74		adoxa
