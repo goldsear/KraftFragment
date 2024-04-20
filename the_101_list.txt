@@ -94,9 +94,7 @@ overall sun color impact in universe (larger for brighter)			Freelancer.exe		1C8
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 number of space particles around the player outside fields (65535 max)		Freelancer.exe		14BDF7	80i (2byte)		Venemon
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
-														B8 89 5C 00
-sun flare size PART 1								Freelancer.exe		11250F	->			Venemon
-														3B 90 5C 00
+sun flare size PART 1								Freelancer.exe		11250F	B8 89 -> 3B 90		Venemon
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 														00 64 80 5B 00 64 80 5B
 sun flare size PART 2								Freelancer.exe		1C903B	->			Venemon
@@ -769,6 +767,11 @@ disable camera level during turret view (fixes ship movement bugs in this view)	
 														00 00 A2 CA EC 67 00
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 multiplier for third person view inertia					Freelancer.exe		1186F0	0.05f			Venemon
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+#cutscenes in space will not use your camera, gives you ability to freely roam during these events
+#Venemon, 20 March 2024
+File: server.dll
+19B57: EB [ 74 ]
 
 -CONTROL-
 auto-level off by default							common.dll		86542	01 -> 00		adoxa
@@ -1507,6 +1510,11 @@ solars with specific ids_name values show up on the Trade Routes window		Freelan
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 group member's nav position refreshes every second				Freelancer.exe		96325	40 3E -> CC 2E		Venemon
 													96338
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+#show all group members on the NavMap
+#BC46, 2024/3/31
+File: Freelancer.exe
+8DC07: 83 C5 18 E9 82 FD FF FF [E9 85 FD FF FF 90 90 90 ]
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 initially hide trade lanes to be discovered both on the radar and NavMap	common.dll		57702	84 -> 04		adoxa
 
