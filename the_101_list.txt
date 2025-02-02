@@ -157,6 +157,11 @@ File: rp8.dll
 File: rp8.dll
 1A5B8: 1b
 |-
+#fix color banding with 24-bit TGA textures (render them as 32-bit)
+#BC46, 13 January 2025
+File: shading.dll
+F94B: 00 [ 0C ]
+|-
 #overall sun color impact in universe (larger for brighter)
 #Venemon, 19 December 2023
 File: Freelancer.exe
@@ -652,22 +657,22 @@ File: content.dll
 File: Freelancer.exe
 5685F: EB 0C [ 8A 50 ]
 |-
-#next level requirements in SP in addition to worth at mission end; formatted Freetime_01_02, Freetime_02_03, Freetime_03_04, Freetime_04_05, Freetime_05_06, Mission_07, Freetime_07_08, Freetime_08_09, Mission_10, Mission_11, Mission_12, Mission_13, Mission_End
+#next level requirements in SP in addition to worth at mission end
 #Stone-D, 31 March 2004
 File: content.dll
-5E5F: 3500f
-5E69: 5200f
-5E73: 7000f
-5E7D: 10000f
-5E87: 16000f
-5E91: 0f
-5E9B: 36000f
-5EA5: 30000f
-5EAF: 0f
-5EB9: 0f
-5EC3: 0f
-5ECD: 0f
-5ED7: 0f
+5E5F: 3500f #Freetime_01_02
+5E69: 5200f #Freetime_02_03
+5E73: 7000f #Freetime_03_04
+5E7D: 10000f #Freetime_04_05
+5E87: 16000f #Freetime_05_06
+5E91: 0f #Mission_07
+5E9B: 36000f #Freetime_07_08
+5EA5: 30000f #Freetime_08_09
+5EAF: 0f #Mission_10
+5EB9: 0f #Mission_11
+5EC3: 0f #Mission_12
+5ECD: 0f #Mission_13
+5ED7: 0f #Mission_End
 
 
 DOCKING/JUMPING
@@ -745,6 +750,13 @@ File: server.dll
 #Laz, 10 March 2023
 File: server.dll
 173DA: EB [ 74 ]
+|-
+#ignore gate locks (prevent access denied)
+#BC46, 8 August 2024
+File: content.dll
+CCFAD: C1 [ C2 ]
+
+
 
 -CRUISE/TRADELANE-
 #allow shooting in cruise
@@ -893,6 +905,8 @@ File: server.dll
 A46C: EB 26 [ 8B C8 ]
 A494: 66 81 7C E4 04 5A 13 74 E2 91 EB CE [ 90 90 90 90 90 90 90 90 90 90 90 90 ]
 
+
+
 -REPUTATION-
 #reputation over which will give you affiliation with that faction (faction name appears in space before your name)
 #Dev, 17 August 2006
@@ -974,6 +988,19 @@ File: common.dll
 #Gold_Sear, 6 June 2024
 File: common.dll
 13E548: -0.6f
+|-
+#reputation needed for factions to offer missions on the Job Board
+#BC46, 22 September 2024
+File: content.dll
+1195C0: 0.2f
+1195BC: -0.2f
+|-
+#ignore reputation test for missions on the Job Board
+#BC46, 22 September 2024
+File: content.dll
+60D0F: EB [ 74 ]
+
+
 
 -CREDITS/MARKET-
 #show current worth in multiplayer
@@ -1074,6 +1101,8 @@ File: Freelancer.exe
 #Venemon, 3 February 2024
 File: Freelancer.exe
 97B9D: 00 [ 01 ]
+
+
 
 -EQUIPMENT/DEALERS-
 #use thruster hp_type for cloaking device
@@ -1189,7 +1218,7 @@ File: Freelancer.exe
 7B020: EB 22 [ 83 F8 ]
 |-
 #prevent mounting/unmounting of all equipment
-@adoxa, 12 November 2009
+#adoxa, 12 November 2009
 File: Freelancer.exe
 7CEC0: 30 [ 84 ]
 |-
@@ -1272,15 +1301,20 @@ AA904: 00 [ 18 ]
 File: Freelancer.exe
 838AF: EB [ 74 ]
 |-
-#auto-CM without activation
+#auto-CM without activation (note: crashes with wrecks)
 #Venemon, 2 February 2024
 File: common.dll
 3A32E: 40 90 [ 84 C0 ]
 |-
-#guided projectiles won't give up tracking a target
+#guided projectiles won't give up tracking a target (note: has adverse side-effects, use below alternative)
 #Venemon, 9 January 2024
 File: common.dll
 4CED4: 90 90 [ 75 09 ]
+|-
+#allows 360° FOV missiles (allows missiles to not give up tracking a target)
+#Venemon, 20 September 2024
+File: server.dll
+1460C: 90 90 90 90 90 90 [ 0F 8A ED 01 00 00 ]
 |-
 #save costume accessories
 #adoxa, 31 December 2018
@@ -1896,6 +1930,11 @@ File: Freelancer.exe
 #adoxa
 File: Freelancer.exe
 1B16CC: 00 [ 01 ]
+|-
+#monitor Freelancer will run on
+#BC46, 2 March 2024
+File: rp8.dll
+6AD9: 0i
 
 
 
@@ -2955,3 +2994,8 @@ File: Freelancer.exe
 #Dev, 17 August 2006
 File: Freelancer.exe
 212DFC: 500f
+|-
+#allow -1.0 ALE effects to spawn for reverse impulsing
+#Venemon, 20 September 2024
+File: Freelancer.exe
+F8C36: EB [ 7A ]
