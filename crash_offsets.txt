@@ -1,0 +1,590 @@
+-common.dll-
+9143
+#specified loadout for [MsnSolar] is not defined in loadouts.ini
+#BC46, 12 November 2023
+|-
+10AC1
+#a package has attenoted to access a ship hull that doesn't exist
+#Katzenkebap, 26 January 2025
+|-
+10DEA
+#good missing equipment line
+#Alex, 19 July 2010
+|-
+10DCE
+#missing archetype
+#occurred when commodities that were for sale on bases were not being loaded
+#IrateRedKite, 1 January 2024
+|-
+25CC9
+#bad surface file
+#Lord of the Hell, 15 January 2012
+|-
+44A99
+#referenced a bad [Asteroid] nickname in a field
+#Darklighter, 23 February 2024
+|-
+45C30
+#[Asteroids] block has been declared in a system ini file without a valid zone
+#IrateRedKite, 14 March 2023
+|-
+4AA02
+#occurs when an NPC that was using a weapon whose model wasn't actually set to be a gun model is destroyed
+#Cellulanus, 9 May 2020
+|-
+4F486
+#seems to be related to cmp reading
+#something has gone wrong with a cmp file or with something that uses it
+#Huor, 25 July 2010
+|-
+4FE6C
+#CShip::Launch causes a CTD when client and server don't have matching base nicknames in the [Object] entry in a system INI. The client is the one that has the CTD
+#drakohen, 14 January 2022
+|-
+52753
+#[Gun] archetype references a munition that doesn't exist
+#IrateRedKite, 13 January 2024
+|-
+5BE63
+#missing exclusion zone, but is called in asteroid/nebula file - look in FlSpew.txt for zone nickname
+#Lord of the Hell, 15 January 2012
+|-
+5D9D4
+#triggers when a random mission solar is destroyed before the player reaches the mission waypoint, typically due to a zero or invalid hit point value
+#JosByte, 26 January 2025
+|-
+5DA50
+#missing explosion archetype called
+#occurred when ship collision groups with fuses attached were not included and then the main fuse was called
+#can also occur when an invalid fuse is specified
+#alternatively, a package has attenoted to access a ship hull that doesn't exist
+#IrateRedKite, 13 January 2024
+#JosByte, 26 January 2025
+|-
+5E010
+#part of function Fuse:UnBurn; likely related to a bad fuse entry, or using nanobots when a death fuse is already ignited
+#adoxa, 11 May 2010
+|-
+603D6
+#originates from IObjInspectImpl::Is_targetable; something that shouldn't have been targeted has been targeted
+#HeIIoween, 21 June 2010
+|-
+62555
+#occurs when docking with a tradelane that has neither a prev_ring nor a next_ring entry
+#Gold_Sear, 29 January 2017
+|-
+6C282
+#group formation leader error
+#Venemon, 2 October 2024
+|-
+91F38
+#ship_archetype = <blank> in players file
+#HeIIoween, 24 August 2010
+|-
+96879
+#bad projectile archetype in [Gun] block
+#Beaglerush, 11 April 2023
+|-
+97E93
+#bad equipment ini files
+#occurred when invalid bool values were listed in 'force_gun_ori' and 'requires ammo'
+#the actual crash seems to be triggered by an equipment entry with bad or invalid content though, in this case an empty [Motor] block
+#IrateRedKite, 10 December 2023
+|-
+9FBEB
+#relates to a bad NPC costume (inconsistent gender choices according to IDA) in mbases.ini
+#IrateRedKite, 14 March 2023
+|-
+AA91A
+#occurs when you try to buy a ship which contains an invalid item in its package; e.g. the nickname of the engine doesn't exist
+#Cpt_Rei_Fukai, 11 November 2018
+|-
+AF690
+#INI_Reader constructor problem with normal FLHook (uses 1024 bytes of data, but 5480 are required; plugin version uses 8192)
+#adoxa, 11 May 2010
+|-
+C22FE
+#occurs when you try to load a save game that contains a reputation to a faction that doesn't exist in initialworld.ini; this offset also seems to show up where faction objects are missing from save games aswell
+#Cpt_Rei_Fukai, 23 July 2018
+|-
+C9B78
+#cause unknown; has to do with rendering of multiplayer text and/or console window
+#Aingar, 2 December 2024
+|-
+E3F9D
+#memory allocation failure
+#adoxa, 11 May 2010
+|-
+F1E2A
+#possibly relates to a malformed cmp or 3db model
+#McDyson, 31 May 2024
+|-
+F1E32
+#max speed threshold crossed, or may relate to missing equipment hardpoints for mounting
+#Gold_Sear, 4 February 2017
+|-
+F20E3
+#bad thruster model
+#Cpt_Rei_Fukai, 10 June 2017
+|-
+F24A0
+#deliberate segfault (presumably a 'this should never happen' scenario)
+#adoxa, 11 May 2010
+|-
+FC376
+#related to ray collision, involves PhySys::FindRayCollisions, may have to do with collisions
+#FriendlyFire, 16 June 2016
+|-
+FD32B
+#occurs sometimes when switching systems
+#relates to a broken quaternion conversion somewhere
+#FriendlyFire, 7 September 2016
+|-
+103141
+#related to PhySys::PhyCollisionStateManager::enable_collisions
+#Huor, 9 June 2010
+
+
+-content.dll-
+12E10
+#relates to a bad NPC costume (inconsistent gender choices according to IDA) in mbases.ini
+#also occurred when attempting to load an NPC in a [BaseFaction] block that hadn't been defined as a [GF_NPC], so this crash likely just relates to a failure to load an NPC in general
+#IrateRedKite, 26 July 2021
+|-
+1833F
+#a mission trigger without a condition was invoked
+#if the trigger doesn't require a proper condition, it needs a 'Cnd_True = no_params' line
+#IrateRedKite, 11 January 2024
+|-
+1AA9F
+#_SendMessage (Server uses this to communicate with every function) crashes due to the following
+#if anyone calls Story mission 'Act_ChangeState = SUCCEED' server will call DestroyInstance for every story instances are running, it will crash the server if there are more than 1 in action
+#this can be temporarily fixed by altering the function, which prevents DestroyInstance erase Story instances
+#it will only stop the last instance with Co-Op mod does for 0x1 iClientID
+#this crash has to be observed in SP where there was a problem establishing the mission status of the player
+#Venemon, 2 October 2024
+|-
+25CC9
+#story trigger, Act_LockDock error?
+#possible nullpointer base?
+#might be related to other story triggers too
+#previous OPjump does initialize every trigger of story manager
+#Venemon, 2 October 2024
+|-
+2D541
+#story manager tried to submit an order/reputation to an NPC that doesn't exist
+#documented this bug at SpawnShip within initState = ACTIVE trigger
+#Venemon, 2 October 2024
+|-
+2FE8F
+#AI logic error
+#3 different functions use this area
+#one of them controls their orders as they spawn and the other one upon destruction
+#Venemon, 2 October 2024
+|-
+47BC4
+#related to NPCs and/or their chatter
+#possibly bad encounter, missing formation from faction_prop.ini
+#Tiger_MU, 20 October 2010
+|-
+490A5
+#related to multiple platers/ships suiciding at the same moment into a planet/death zone
+#also relates to formation errors, you may wish to check faction_prop.ini formation values
+#FriendlyFire, 11 May 2010
+#HeIIoween, 11 May 2010
+|-
+49C95
+#settimer assignment error, unstable instance for unknown reasons
+#Venemon, 2 October 2024
+|-
+512AC
+#faction prop is missing but initialworld and empathy configuration are correct
+#possibly relates to how bases are constructed
+#EngiN33R, 6 June 2024
+#IrateRedKite, 6 June 2024
+|-
+53B9F
+#bad encounter file
+#missing [EncounterFormation] or [Creation] blocks
+#IrateRedKite, 27 March 2023
+|-
+55540
+#bad encounter permutation value
+#IrateRedKite, 1 January 2025
+|-
+55727
+#occurs when an encounter is spawned that contains more permutation lines than formations
+#Cpt_Rei_Fukai, 11 November 2018
+|-
+55796
+#client crashed during MP base cutscene when server shut down
+#crash in DestroyInstance
+#Venemon, 2 October 2024
+|-
+5CCD4
+#missing/mistyped formation
+#HeIIoween, 3 June 2011
+|-
+639C6
+#related to character animations
+#occurred when voice keys were commented out in gcsexcl.ini without also commenting out their accompanying scripts
+#BC46, 29 July 2023
+|-
+63A98
+#related to character animations
+#occurred when voice keys were commented out in gcsexcl.ini without also commenting out their accompanying scripts
+#BC46, 29 July 2023
+|-
+6C216
+#seems to be a missing or null patrol path waypoint
+#initially triggered by giving an NPC on patrol in a ship that couldn't vanish by docking the arrival = all, -tradelane, -object_jump_gate tag
+#in cases where the patrol spawned at the end of the path in a docked state, it would cause this crash
+#IrateRedKite, 27 March 2023
+|-
+89651
+#reputation based error
+#happened when SP Story reputation functions are enabled in MP
+#Venemon, 2 October 2024
+|-
+9100F
+#possible bad tradelane
+#Lord of the Hell, 15 January 2012
+|-
+95598
+#faction_prop entry is missing but initialworld is correct
+#Laz, 6 October 2023
+#BC46, 6 October 2023
+|-
+9566D
+#possible bad tradelane
+#Lord of the Hell, 15 January 2012
+|-
+956E4
+#npc_ship in faction_prop.ini listed that doesn't exist
+#also seen as 0x0013f932 in kernelbase.dll when launching flserver.exe with flhook.dll preloading files
+#IrateRedKite, 13 March 2023
+|-
+BD173
+#archID is converted to goodID
+#goodID lookup fails, causing the crash
+#occurred when ammo entries for loot were not defined in lootprops.ini
+#if a munition entry has 'requires_ammo = true', the ammo AND the gun both require a lootprops.ini entry
+#the MP crash offset is 13FAE2 in KernelBase.dll
+|-
+C458F
+#encounter related
+#possibly related to missing faction entries in an mbases.ini entry
+#Cpt_Rei_Fukai, 30 May 2010
+#FriendlyFire, 30 May 2010
+|-
+C45A2
+#encounter related
+#can be patched by C458F, 33 C0 90 [ 8B 04 82 ]
+#HeIIoween, 12 November 2023
+|-
+C465F
+#mixed non-patched and 1.1 patched files
+#Nova, 23 May 2010
+|-
+C491F
+#empty encounter?
+#occurred when ship_by_class had a 0 value with no alternatives
+#IrateRedKite, 12 November 2023
+|-
+D9151
+#missing encounter ini file in system encounter declaration
+#IrateRedKite, 12 November 2023
+|-
+DB0F1
+#patrol encounter attempted to spawn inside a population zone that wasn't a patrol path
+#Lord of the Hell, 15 January 2012
+#Cpt_Rei_Fukai, 15 January 2012
+|-
+F7BF2
+#triggers when FL attempts to create a cargo retrieval/destroy random mission but there is no valid defined good provided in vignettecriticalloot.ini
+#JosByte, 26 January 2025
+|-
+F7C2F
+#bad rmlootprops.ini entries
+#IrateRedKite, 25 February 2020
+
+
+-server.dll-
+78d3
+#called as part of pub::SpaceObj::Dock
+#running FLHook on a server should fix this
+#adoxa, 11 May 2010
+|-
+F988
+#missing destination jumpgate
+#client and server failed to sync jump destination system, causes crash in SP
+#IrateRedKite, 21 March 2023
+#Venemon, 2 October 2024
+|-
+14990
+#part of dicking, and others
+#it's a function to swap the sign of a vector
+#this crash occurs when undocking from a base with no valid undocking point
+#adoxa, 11 May 2010
+|-
+17F38
+#related to a bad ship loadout
+#occurs after Loadout::Get, presumably returning NULL, called when a ship is created
+#IrateRedKite, 3 February 2020
+|-
+1B221
+#more than 10 holes/gates per system
+#HeIIoween, 11 November 2023
+|-
+2247F
+#NPC loadout is missing engine
+#attempts to enter cruise, then can't find and crashes
+#this crash can also occur for flserver.exe in server dll at 22567
+#at both addresses it fails to call 'CEEngine::cast(CEquip*)'
+#HeIIoween, 15 May 2010
+#adoxa, 15 May 2010
+|-
+2C267
+#seems to be another part of docking, and others
+#adoxa, 11 May 2010
+|-
+2C290
+#seems to be another part of docking, and others
+#adoxa, 11 May 2010
+|-
+76FDF
+#related to loading a player
+#possibly a corrupt character file
+#HeIIoween, 22 July 2010
+|-
+AB670
+#triggered by warping to a base that doesn't have a physical presence, but has an mbase and universe entry
+#Laz, 10 April 2020
+
+
+-alchemy.dll-
+701B
+#rare crash, occurs inconsistently when creating an instant jump fx
+#Gold_Sear, 25 June 2017
+|-
+187BC
+#duplicate node name
+#occurred when an emitter and node had the same name
+#IrateRedKite, 12 November 2023
+|-
+1F3A6
+#occurs when the <pairs> of an effect use numbers that do not exist in the <fx> part of the effect
+#Cpt_Rei_Fukai, 11 November 2018
+
+
+-dalib.dll-
+4353
+#memory allication failure in CDPMsgList::Add
+#it's only asking for 12 bytes, so there must be some serious memory leakage going on
+#robocop, 25 August 2010
+
+
+-freelancer.exe-
+6100
+#bad wireframe
+#adoxa, 15 January 2012
+|-
+1EFA9
+#Freelancer tries to access a directinput8 instance for the mouse and fails
+#it's possible that this crash is caused by a hardware issue
+#Laz, 6 January 2024
+|-
+25640
+#seems to be a missing or bad nebula file
+#IrateRedKite, 2 December 2023
+|-
+3BB07
+#invalid base room
+#IrateRedKite, 12 November 2023
+|-
+46909
+#invalid equipment entry in a loadout
+#IrateRedKite, 23 October 2023
+|-
+54F08
+#possible corrupted mbases.ini
+#this is also caused by missing 'gcs_fmsit_*.thn' scripts from the 'DATA/SCRIPTS/GCS' folder
+#HeIIoween, 12 November 2023
+#Louva-Deus, 12 November 2023
+|-
+58000
+#occurs when a player has got an item equipped that no longer exists, e.g. the weapon was deleted
+#Cpt_Rei_Fukai, 17 November ????
+|-
+7E244
+#triggers where an NPCShips block has an invalid Shiparch entry specified
+#JosByte, 26 January 2025
+|-
+80A9B
+#attempted to purchase a ship in MP when the player had no ship
+#this was a forced crash that occurred when the %PACKAGE% value was removed from mpnewcharacter.fl
+#IrateRedKite, 16 January 2024
+|-
+8381A
+#bad goods.ini entry
+#in the instance where this was occurring, the 'price' field contained invalid data
+#this can also occur when an item is sold for 0 credits
+#IrateRedKite, 1 December 2023
+|-
+D1744
+#Freelancer was unable to find a system file entry defined in universe.ini
+#this can also occur if a system is loaded with no solar objects present
+#IrateRedKite, 11 January 2024
+|-
+E53ED
+#occurred following a formation join and cargo scan
+#cause isn't clear
+#Gold_Sear, 22 April 2017
+|-
+ED422
+#player in multiplayer died, respawned and didn't have a 'last base' to go to
+#this occurred when the start location was set to space, and the player died repeatedly before docking
+#crash occurs on the client, not the server
+#IrateRedKite, 29 January 2024
+|-
+108853
+#referenced a nebula field file that doesn't exist
+#Jammi, 26 January 2024
+|-
+114764
+#occurs when a next_ring does not reference to a tradelane ring
+#Gold_Sear, 29 January 2017
+|-
+12D1E4
+#attempted to fire an equipment object with a missing or malformed HpFire hardpoint
+#IrateRedKite, 22 June 2024
+|-
+13B395
+#possibly relates to a bad ship archetype
+#the function this crashes in is related to creating or showing a ship in a player's scanner range
+#exact cause is unclear
+#Katzenkebap, 9 May 2024
+#Venemon, 9 May 2024
+|-
+13D55A
+#client tried to dock to a solar that does not exist from its perspective, either done through SwitchOut or following a formation leader that is docking
+#Venemon, 2 October 2024
+|-
+13F4D7
+#a referenced [Effect] nickname isn't present in an effects.ini file
+#IrateRedKite, 20 February 2024
+|-
+14661B
+#occurs when an NPC is destroyed after it is spawned but still has logic tied to it, for example during a tradelane encounter
+#this originally occurred when an NPC with a fuse to instantly destroy it was referenced the lane's destination pop zone
+#this specific instance is handled in multiplayer, but not SP, leading to this crash
+#Beaglerush, 8 May 2024
+|-
+1469F6
+#client tried to send its targeting information to the server, but failed
+#tried to target during SystemSwitchOut
+#Venemon, 2 October 2024
+|-
+1531EF
+#missing solar archetypes on system load
+#IrateRedKite, 2 December 2023
+|-
+1AAD50
+#based on pure speculation, client tried to switch chars during server froze and it crashed
+#Venemon, 2 October 2024
+|-
+1B26B7
+#relates to a render problem with alt-tabbing and window focus
+#function at this address suggests that the crash is a failure to populate the IRenderPipeline or DALib::Pipeline structs correctly
+#IrateRedKite, 29 January 2024
+
+
+-ntdll.dll-
+101B3
+#related to NPCs and/or their chatter
+#Tiger_MU, 20 October 2010
+|-
+109D8
+#using inherit in ShieldGenerator
+#Jeider, 7 July 2017
+|-
+109F9
+#possible heap corruption
+#Livsi, 14 February 2017
+|-
+109FB
+#possible heap corruption
+#Livsi, 14 February 2017
+|-
+11669
+#possible heap corruption
+#Livsi, 14 February 2017
+|-
+11689
+#not supported/equipable archetype in players char file
+#HeIIoween, 23 July 2010
+|-
+118CA
+#possible heap corruption
+#Livsi, 14 February 2017
+|-
+3FF05
+#incompatible d3d8.dll wrapper/converter
+#HeIIoween, 12 November 2023
+|-
+4591F
+#access violation
+#seems to relate to NPCs in some way
+#IrateRedKite, 19 December 2023
+|-
+864BA
+#damaging/destroying an incorrectly defined collision group
+#Aingar, 21 March 2024
+
+
+-rendcomp.dll-
+11163
+#bad hash at <VMeshLibrary>
+#Lord of the Hell, 15 January 2012
+
+
+-engbase.dll-
+11731
+#possibly relates to a bad fuse
+#exact cause is unclear
+#Caenen, 2 February 2024
+|-
+124BD
+#something major failing if this is occurring: called from GetRoot and IsDescendant
+#Nightstalker, 19 July 2010
+
+
+-flmaterials.dll-
+5B33
+#texture related problems
+#this was originally caused by a bad texture on Bw08_suprise_ge_train_1 in Tau-23 in an old HD Texture pack
+#HeIIoween, 7 April 2012
+
+
+-thorn.dll-
+5DD2
+#attempted to call an animation for an entry in a Thorn scene that doesn't exist
+#occurred when attempting to call 'START_MOTION' for 'sc_no_loop' on a set 3db in a base ambient script
+#IrateRedKite, 3 January 2024
+
+
+-shading.dll-
+F658
+#excessive particle limits set for alchemy effects in Freelancer.ini
+#Jos_Naabal, 12 January 2024
+|-
+12F1E
+#invalid puff cloud defined in a nebula entry
+#a crash will not always occur, but if no valid puff is present, the game will crash
+#JosByte, 26 January 2025
+
+
+-rp8.dll-
+33B2F
+#occurs if in the current system there is one or more objects that doesn't have power of two size textures
+#JosByte, 8 October 2024
