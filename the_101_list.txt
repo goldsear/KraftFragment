@@ -38,6 +38,17 @@ File: soundmanager.dll
 #Venemon, 14 July 2024
 File: content.dll
 12E368: 00 [ 01 ]
+|-
+#interface volume can be controlled independently from sound effects volume
+#BC46
+File: Freelancer.exe
+B1503: 83 [ 38 ]
+|-
+#ambience volume can be controlled independently from music volume
+#BC46
+File: Freelancer.exe
+B1554: 84 [ 39 ]
+
 
 -VISIBILITY-
 #near plane of view frustum
@@ -136,6 +147,11 @@ File: Freelancer.exe
 File: Freelancer.exe
 1AD6F: 00 20 [ 80 00 ]
 |-
+#fix bug with low resolution textures of news entries and mission board pictures on some systems
+#BC46, 4 May 2025
+File: Freelancer.exe
+1B48B8: 00 [ 07 ]
+|-
 #always use high-quality space rendering; makes planets look more round from far distances
 #adoxa
 File: rendcomp.dll
@@ -213,6 +229,11 @@ File: Freelancer.exe
 #Venemon, 14 July 2024
 File: Freelancer.exe
 152E7C: EB [ 74 ]
+|-
+#always assume best machine speed for determining default performance options
+#BC46, 15 February 2025
+File: Freelancer.exe
+A9326: EB [ 7F ]
 
 
 
@@ -236,7 +257,7 @@ File: content.dll
 |-
 #add vertical component to random spawn
 #Gold_Sear, 31 January 2025
-File: Content.dll
+File: content.dll
 C1F0B: 4C E4 14 C1 E9 07 EB 03 [ 0C C2 8B 7C C2 04 C1 E1 ]
 |-
 #allow NPC max spawn distance below 2500
@@ -390,7 +411,7 @@ C4C06: 2000f #max
 |-
 #use spawn position instead of player position for arrival = cruise (allows to safely increase spawn distances)
 #Gold_Sear, 27 January 2025
-File: Content.dll
+File: content.dll
 C2011: 45 00 EB 02 [ 84 24 1C 0D ]
 C2022: 45 04 EB 02 [ 84 24 14 0D ]
 C2034: 45 08 EB 02 [ 84 24 18 0D ]
@@ -500,6 +521,11 @@ File: common.dll
 #Aingar
 File: common.dll
 66148: 7F [ 03 ]
+|-
+#fix NPCs saying the first number of their call sign twice when requesting to dock
+#BC46, 18 April 2025
+File: content.dll
+37068: 03 [ 02 ]
 
 
 -RANDOM MISSIONS-
@@ -604,12 +630,6 @@ F8A4B: 00 CB FC [ 58 CC FB ]
 File: content.dll
 F8A54: 80 CB FC [ 7C CC FB ]
 |-
-#disable ArchDB::Get random mission spew warning
-#adoxa, 2 April 2012
-File: common.dll
-995B6: 90 90 [ FF 10 ]
-995FC: 90 90 [ FF 12 ]
-|-
 #random mission NPCs will use missiles (changes their attack_preference to GUNS|GUIDED|UNGUIDED)
 #BC46
 File: content.dll
@@ -629,6 +649,12 @@ File: server.dll
 #M0tah
 File: server.dll
 3A438: EB [ 74 ]
+|-
+#name of NPC class to spawn in random missions
+#Skotty., 18 April 2025
+File: content.dll
+11CBE8: "class_fighter"
+
 
 
 -SCRIPTED MISSIONS (story etc.)-
@@ -673,6 +699,11 @@ File: content.dll
 5EC3: 0f #Mission_12
 5ECD: 0f #Mission_13
 5ED7: 0f #Mission_End
+|-
+#Cnd_CommComplete is recognized in MP (packets are sent to server)
+#Venemon, 15 July 2025
+File: Freelancer.exe
+CBEE7: 90 90 [ 74 25 ]
 
 
 DOCKING/JUMPING
@@ -730,6 +761,11 @@ File: common.dll
 File: common.dll
 63645: 62 [ 60 ]
 63650: 02 [ 00 ]
+|-
+#F3 docking works with CAPITAL type
+#BC46, 10 March 2025
+File: common.dll
+63657: 20 [ 00 ]
 |-
 #how far behind a jumpgate a ship (player or NPC) will be spawned - the ship will move from this point to the arrival point near the gate during the respective [JumpGateEffect] jump_in_time
 #foxUnit01
@@ -865,6 +901,8 @@ File: common.dll
 File: Freelancer.exe
 D5F53: B0 00 90 [ 8A 47 54 ]
 
+
+
 -DAMAGE/REPAIR/COLLISION-
 #fix explosion damage not causing full damage (or no damage) on large ships and bases
 #M0tah, 27 March 2010
@@ -979,6 +1017,11 @@ File: content.dll
 File: content.dll
 6272: EB 04 [ FF 15 ]
 |-
+#list of groups in nickname form that will automatically be added to your reputation screen (keep last 00)
+#BC46, 3 January 2025
+File: Freelancer.exe
+1D4848: "li_p_grp" 00 00 00 00
+|-
 #hostile formation reputation
 #Venemon, 28 January 2024
 File: common.dll
@@ -999,6 +1042,22 @@ File: content.dll
 #BC46, 22 September 2024
 File: content.dll
 60D0F: EB [ 74 ]
+|-
+#reputation adjustment after destroying a DESTROYABLE_DEPOT
+#BC46, 9 December 2024
+File: content.dll
+D00D4: -0.1f
+|-
+#ship offer initially is greyed out until server confirmes necessary reputation requirements are met (MPRep plugin)
+#BC46, 23 October 2024
+File: MPRep.dll
+695: 22 [ 3F ]
+|-
+#IDS of insufficient reputation message
+#BC46, 3 March 2025
+File: Freelancer.exe
+8073C: 1564i
+B9011: 1564i
 
 
 
@@ -1288,6 +1347,11 @@ File: Freelancer.exe
 File: Freelancer.exe
 8053E: E9 8B 01 00 00 90 [ 0F 85 8A 01 00 00 ]
 |-
+#load purchased equipment into cargo hold if a suitable hardpoint is unavailable, rather than mounting it internally
+#BC46, 26 September 2024
+File: Freelancer.exe
+7EC69: 00 [ 29 ]
+|-
 #include external equipment in cargo size
 #adoxa, 11 January 2011
 File: common.dll
@@ -1494,7 +1558,7 @@ File: Freelancer.exe
 1C9680: 0.00125d
 |-
 #prevent Countermeasures from being fired by Right Click
-#BC46
+#BC46, Venemon
 File: Freelancer.exe
 12D279: 39 F1 74 03 30 C0 C3 [ 90 90 90 90 90 90 90 ]
 1DD5A8: 79 [ 80 ]
@@ -1686,7 +1750,7 @@ File: server.dll
 File: server.dll
 2C057: 75 0B C7 84 8C 9C 00 00 00 00 00 00 00 41 83 C2 04 39 C1 7C E9 EB [ 74 0A 41 83 C2 04 3B C8 7C F4 EB 0B C7 84 8C 9C 00 00 00 00 00 00 ]
 |-
-#string ID for the Microsoft legal notice which fills the <legal notice goes here> placeholder in the Server Configuration window
+#IDS of the Microsoft legal notice which fills the <legal notice goes here> placeholder in the Server Configuration window
 #BC46
 File: FLServer.exe
 6AF9: 61485i
@@ -1756,6 +1820,16 @@ File: Freelancer.exe
 #FriendlyFire, 26 January 2019
 File: Freelancer.exe
 158A14: 90 90 90 90 90 90 [ D9 1D 0C 0A 61 00 ]
+|-
+#prevent intentional framerate drops to 25 from occurring during cutscenes
+#BC46, 28 May 2024
+File: Freelancer.exe
+158A10: C0 [ BC ]
+|-
+#prevent sudden framerate drops from occurring in space; effectively removes sleep(1) from the delta time calculation
+#BC46, 28 May 2024
+File: Freelancer.exe
+2D7B8: EB 0D [ 6A 01 ]
 
 
 
@@ -1854,7 +1928,17 @@ File: remoteserver.dll
 249B1: BF 21 9A 30 06 FF D7 [ 8B 7D 38 8B C8 8B D1 ]
 File: common.dll
 A9A21: BF 71 9B 30 06 89 7D 38 8B C8 8B D1 C3 [ 90 90 90 90 90 90 90 90 90 90 90 90 90 ]
-
+|-
+#disable ArchDB::Get random mission spew warning
+#adoxa, 2 April 2012
+File: common.dll
+995B6: 90 90 [ FF 10 ]
+995FC: 90 90 [ FF 12 ]
+|-
+#disable 'connecting internal type' spew warning for EngClass plugin
+#adoxa, 24 October 2024
+File: common.dll
+49775: 4E [ 0D ]
 
 
 -DISPLAY-
@@ -2610,6 +2694,11 @@ File: Freelancer.exe
 #adoxa
 File: common.dll
 57702: 04 [ 84 ]
+|-
+#ids_info of player waypoints; change to 1102i to decapitalize
+#BC46, 14 July 2025
+File: Freelancer.exe
+75A56: 1125i
 
 -HUD:OTHER-
 #distance from a waypoint when it is considered reached
@@ -2741,13 +2830,18 @@ File: Freelancer.exe
 174634: E8 47 E5 FA FF 83 7C 24 50 02 75 11 DB 05 4C 46 57 00 EB 0D [ C7 44 24 70 00 00 00 00 C7 44 24 74 00 00 00 00 C7 44 24 78 ]
 174744: 00 00 [ 80 3E ]
 |-
-#string ID for the "VER. 1.0" text in the bottom-right of the main menu (both offsets must be changed)
+#IDS of the "VER. 1.0" text in the bottom-right of the main menu (both offsets must be changed)
 #BC46
 File: Freelancer.exe
 16DDEC: 1271i
 174890: 1271i
 |-
-#string ID for the final section of the in-game credits
+#IDS of the first section of the in-game credits
+#BC46, 14 February 2023
+File: Freelancer.exe
+AB150: 393279i
+|-
+#IDS of the final section of the in-game credits
 #BC46
 File: Freelancer.exe
 AB1C5: 393286i
